@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MUGSHOT FARM</string>
+
+    <string name="nav_dashboard">ダッシュボード</string>
+    <string name="nav_light">ライト</string>
+    <string name="nav_fertiliser">肥料</string>
+    <string name="nav_water">水</string>
+    <string name="nav_solar">ソーラー</string>
+
+    <string name="common_status">ステータス</string>
+    <string name="common_online">オンライン</string>
+    <string name="common_offline">オフライン</string>
+    <string name="common_nominal">正常</string>
+    <string name="common_warning">警告</string>
+    <string name="common_critical">危険</string>
+    <string name="common_active">稼働中</string>
+    <string name="common_idle">待機中</string>
+    <string name="common_auto">自動</string>
+    <string name="common_manual">手動</string>
+    <string name="common_last_updated">最終更新</string>
+    <string name="common_zone">ゾーン</string>
+    <string name="common_today">本日</string>
+
+    <string name="dashboard_title">農場概要</string>
+    <string name="dashboard_subtitle">全システムの状態</string>
+    <string name="dashboard_section_stats">リアルタイム統計</string>
+    <string name="dashboard_section_modules">モジュール</string>
+    <string name="dashboard_stat_temperature">温度</string>
+    <string name="dashboard_stat_humidity">湿度</string>
+    <string name="dashboard_stat_co2">CO2濃度</string>
+    <string name="dashboard_stat_power">消費電力</string>
+    <string name="dashboard_alert_title">アクティブアラート</string>
+    <string name="dashboard_no_alerts">アラートはありません</string>
+    <string name="dashboard_energy_today">本日の電力量</string>
+    <string name="dashboard_water_used_today">本日の使用水量</string>
+
+    <string name="light_title">生育ライト</string>
+    <string name="light_subtitle">スペクトルとスケジュール制御</string>
+    <string name="light_section_zones">ライトゾーン</string>
+    <string name="light_intensity">光強度</string>
+    <string name="light_spectrum">スペクトル</string>
+    <string name="light_schedule">スケジュール</string>
+    <string name="light_on_time">点灯時刻</string>
+    <string name="light_off_time">消灯時刻</string>
+    <string name="light_daily_hours">1日の点灯時間</string>
+    <string name="light_zone_status_on">点灯中</string>
+    <string name="light_zone_status_off">消灯中</string>
+    <string name="light_zone_status_fault">故障</string>
+
+    <string name="fert_title">肥料</string>
+    <string name="fert_subtitle">養液の投与とタンク</string>
+    <string name="fert_section_tanks">養液タンク</string>
+    <string name="fert_ec">EC値</string>
+    <string name="fert_ph">pH値</string>
+    <string name="fert_tank_level">タンク残量</string>
+    <string name="fert_next_dose">次回投与</string>
+    <string name="fert_dosing_now">投与中</string>
+    <string name="fert_section_schedule">投与スケジュール</string>
+
+    <string name="water_title">給水システム</string>
+    <string name="water_subtitle">貯水と灌漑</string>
+    <string name="water_reservoir_level">貯水タンク残量</string>
+    <string name="water_flow_rate">流量</string>
+    <string name="water_temperature">水温</string>
+    <string name="water_ph">pHバランス</string>
+    <string name="water_pump_status">ポンプ状態</string>
+    <string name="water_section_lines">灌漑ライン</string>
+    <string name="water_next_cycle">次回サイクル</string>
+
+    <string name="solar_title">ソーラーグリッド</string>
+    <string name="solar_subtitle">発電と蓄電</string>
+    <string name="solar_production">現在の発電量</string>
+    <string name="solar_battery">バッテリー残量</string>
+    <string name="solar_grid_feed">売電量</string>
+    <string name="solar_grid_draw">買電量</string>
+    <string name="solar_section_panels">パネルアレイ</string>
+    <string name="solar_panel">パネル</string>
+    <string name="solar_today_total">本日の合計</string>
+    <string name="solar_efficiency">発電効率</string>
+</resources>

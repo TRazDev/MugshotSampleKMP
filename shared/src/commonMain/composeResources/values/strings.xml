@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MUGSHOT FARM</string>
+
+    <string name="nav_dashboard">Dashboard</string>
+    <string name="nav_light">Light</string>
+    <string name="nav_fertiliser">Fertiliser</string>
+    <string name="nav_water">Water</string>
+    <string name="nav_solar">Solar</string>
+
+    <string name="common_status">STATUS</string>
+    <string name="common_online">ONLINE</string>
+    <string name="common_offline">OFFLINE</string>
+    <string name="common_nominal">NOMINAL</string>
+    <string name="common_warning">WARNING</string>
+    <string name="common_critical">CRITICAL</string>
+    <string name="common_active">ACTIVE</string>
+    <string name="common_idle">IDLE</string>
+    <string name="common_auto">AUTO</string>
+    <string name="common_manual">MANUAL</string>
+    <string name="common_last_updated">LAST UPDATED</string>
+    <string name="common_zone">ZONE</string>
+    <string name="common_today">TODAY</string>
+
+    <string name="dashboard_title">Farm Overview</string>
+    <string name="dashboard_subtitle">All systems status</string>
+    <string name="dashboard_section_stats">Live Stats</string>
+    <string name="dashboard_section_modules">Modules</string>
+    <string name="dashboard_stat_temperature">Temperature</string>
+    <string name="dashboard_stat_humidity">Humidity</string>
+    <string name="dashboard_stat_co2">CO2 Level</string>
+    <string name="dashboard_stat_power">Power Draw</string>
+    <string name="dashboard_alert_title">Active Alerts</string>
+    <string name="dashboard_no_alerts">No active alerts</string>
+    <string name="dashboard_energy_today">Energy Today</string>
+    <string name="dashboard_water_used_today">Water Used Today</string>
+
+    <string name="light_title">Grow Light</string>
+    <string name="light_subtitle">Spectrum &amp; schedule control</string>
+    <string name="light_section_zones">Light Zones</string>
+    <string name="light_intensity">Intensity</string>
+    <string name="light_spectrum">Spectrum</string>
+    <string name="light_schedule">Schedule</string>
+    <string name="light_on_time">ON Time</string>
+    <string name="light_off_time">OFF Time</string>
+    <string name="light_daily_hours">Daily Hours</string>
+    <string name="light_zone_status_on">LIGHTS ON</string>
+    <string name="light_zone_status_off">LIGHTS OFF</string>
+    <string name="light_zone_status_fault">Fault</string>
+
+    <string name="fert_title">Fertiliser</string>
+    <string name="fert_subtitle">Nutrient dosing &amp; tanks</string>
+    <string name="fert_section_tanks">Nutrient Tanks</string>
+    <string name="fert_ec">EC Level</string>
+    <string name="fert_ph">pH Level</string>
+    <string name="fert_tank_level">Tank Level</string>
+    <string name="fert_next_dose">Next Dose</string>
+    <string name="fert_dosing_now">Dosing Now</string>
+    <string name="fert_section_schedule">Dosing Schedule</string>
+
+    <string name="water_title">Water System</string>
+    <string name="water_subtitle">Reservoir &amp; irrigation</string>
+    <string name="water_reservoir_level">Reservoir Level</string>
+    <string name="water_flow_rate">Flow Rate</string>
+    <string name="water_temperature">Water Temp</string>
+    <string name="water_ph">pH Balance</string>
+    <string name="water_pump_status">Pump Status</string>
+    <string name="water_section_lines">Irrigation Lines</string>
+    <string name="water_next_cycle">Next Cycle</string>
+
+    <string name="solar_title">Solar Grid</string>
+    <string name="solar_subtitle">Power generation &amp; storage</string>
+    <string name="solar_production">Current Production</string>
+    <string name="solar_battery">Battery Storage</string>
+    <string name="solar_grid_feed">Grid Feed</string>
+    <string name="solar_grid_draw">Grid Draw</string>
+    <string name="solar_section_panels">Panel Array</string>
+    <string name="solar_panel">Panel</string>
+    <string name="solar_today_total">Today’s Total</string>
+    <string name="solar_efficiency">Efficiency</string>
+</resources>
