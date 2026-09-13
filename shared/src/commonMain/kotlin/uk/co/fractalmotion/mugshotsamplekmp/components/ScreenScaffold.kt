@@ -32,6 +32,8 @@ import uk.co.fractalmotion.mugshotsamplekmp.theme.MugshotStroke
 import uk.co.fractalmotion.mugshotsamplekmp.theme.MugshotTheme
 import uk.co.fractalmotion.mugshotsamplekmp.theme.StatusTone
 
+private val ExpandedHorizontalPadding = 48.dp
+
 /**
  * Shared chrome for every module screen: dot-grid background, a header with the module
  * wordmark/title/status, responsive side padding, and a width cap so wide desktop/tablet
@@ -53,7 +55,7 @@ fun ModuleScreenScaffold(
             val horizontalPadding = when (windowSize) {
                 FarmWindowSize.Compact -> MugshotSpacing.lg
                 FarmWindowSize.Medium -> MugshotSpacing.xxl
-                FarmWindowSize.Expanded -> 48.dp
+                FarmWindowSize.Expanded -> ExpandedHorizontalPadding
             }
             Column(
                 modifier = Modifier
@@ -72,6 +74,9 @@ fun ModuleScreenScaffold(
         }
     }
 }
+
+private val TitleToSubtitleGap = 2.dp
+private val AccentStripeHeight = 6.dp
 
 @Composable
 private fun ModuleHeader(
@@ -96,7 +101,7 @@ private fun ModuleHeader(
         ) {
             Column(Modifier.weight(1f)) {
                 Text(text = title, style = MaterialTheme.typography.headlineLarge, color = colors.ink)
-                Spacer(Modifier.height(2.dp))
+                Spacer(Modifier.height(TitleToSubtitleGap))
                 Text(text = subtitle, style = MaterialTheme.typography.bodyMedium, color = colors.inkMuted)
             }
             Spacer(Modifier.width(MugshotSpacing.md))
@@ -106,7 +111,7 @@ private fun ModuleHeader(
         Box(
             Modifier
                 .fillMaxWidth()
-                .height(6.dp)
+                .height(AccentStripeHeight)
                 .background(accent.tone)
                 .border(MugshotStroke.hairline, colors.ink),
         )

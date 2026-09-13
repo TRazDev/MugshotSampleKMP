@@ -13,7 +13,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import mugshotsamplekmp.shared.generated.resources.Res
 import mugshotsamplekmp.shared.generated.resources.dashboard_alert_title
 import mugshotsamplekmp.shared.generated.resources.dashboard_energy_today
@@ -45,8 +44,6 @@ import uk.co.fractalmotion.mugshotsamplekmp.theme.MugshotSpacing
 import uk.co.fractalmotion.mugshotsamplekmp.theme.MugshotTheme
 import uk.co.fractalmotion.mugshotsamplekmp.theme.StatusTone
 
-private val moduleAccents = listOf(ModuleAccent.Light, ModuleAccent.Fertiliser, ModuleAccent.Water, ModuleAccent.Solar)
-
 @Composable
 fun DashboardScreen(state: DashboardUiState) {
     val (vitals, modules, alerts, energyTodayKwh, waterUsedTodayLiters) = state
@@ -77,9 +74,7 @@ fun DashboardScreen(state: DashboardUiState) {
         SectionHeader(title = stringResource(Res.string.dashboard_section_modules))
         Spacer(Modifier.height(MugshotSpacing.sm))
         Column(verticalArrangement = Arrangement.spacedBy(MugshotSpacing.sm)) {
-            modules.forEachIndexed { index, module ->
-                ModuleStatusRow(module = module, accent = moduleAccents.getOrElse(index) { ModuleAccent.Dashboard })
-            }
+            modules.forEach { module -> ModuleStatusRow(module) }
         }
 
         Spacer(Modifier.height(MugshotSpacing.xl))
@@ -95,7 +90,7 @@ fun DashboardScreen(state: DashboardUiState) {
             } else {
                 alerts.forEachIndexed { index, alert ->
                     Row(verticalAlignment = Alignment.CenterVertically) {
-                        PixelDot(color = alert.tone.tone, size = 7.dp)
+                        PixelDot(color = alert.tone.tone)
                         Spacer(Modifier.width(MugshotSpacing.sm))
                         Text(
                             text = alert.message,
@@ -126,11 +121,11 @@ fun DashboardScreen(state: DashboardUiState) {
 }
 
 @Composable
-private fun ModuleStatusRow(module: ModuleStatus, accent: ModuleAccent) {
+private fun ModuleStatusRow(module: ModuleStatus) {
     PixelCard(modifier = Modifier.fillMaxWidth()) {
         Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
             Row(verticalAlignment = Alignment.CenterVertically) {
-                PixelDot(color = accent.tone, size = 8.dp)
+                PixelDot(color = module.accent.tone)
                 Spacer(Modifier.width(MugshotSpacing.sm))
                 Text(stringResource(module.labelRes).uppercase(), style = MaterialTheme.typography.titleSmall, color = MugshotTheme.colors.ink)
             }
@@ -139,7 +134,7 @@ private fun ModuleStatusRow(module: ModuleStatus, accent: ModuleAccent) {
         Spacer(Modifier.height(MugshotSpacing.xs))
         Text(module.headline, style = MaterialTheme.typography.bodySmall, color = MugshotTheme.colors.inkMuted)
         Spacer(Modifier.height(MugshotSpacing.sm))
-        SegmentedGauge(fraction = module.fraction, accent = accent.tone)
+        SegmentedGauge(fraction = module.progressFraction, accent = module.accent.tone)
     }
 }
 

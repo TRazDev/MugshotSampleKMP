@@ -21,13 +21,13 @@ import mugshotsamplekmp.shared.generated.resources.solar_battery
 import mugshotsamplekmp.shared.generated.resources.solar_efficiency
 import mugshotsamplekmp.shared.generated.resources.solar_grid_draw
 import mugshotsamplekmp.shared.generated.resources.solar_grid_feed
-import mugshotsamplekmp.shared.generated.resources.solar_panel
 import mugshotsamplekmp.shared.generated.resources.solar_production
 import mugshotsamplekmp.shared.generated.resources.solar_section_panels
 import mugshotsamplekmp.shared.generated.resources.solar_subtitle
 import mugshotsamplekmp.shared.generated.resources.solar_title
 import mugshotsamplekmp.shared.generated.resources.solar_today_total
 import org.jetbrains.compose.resources.stringResource
+import uk.co.fractalmotion.mugshotsamplekmp.components.asFraction
 import uk.co.fractalmotion.mugshotsamplekmp.components.LabelledGauge
 import uk.co.fractalmotion.mugshotsamplekmp.components.ModuleScreenScaffold
 import uk.co.fractalmotion.mugshotsamplekmp.components.PixelCard
@@ -41,6 +41,9 @@ import uk.co.fractalmotion.mugshotsamplekmp.theme.MugshotSpacing
 import uk.co.fractalmotion.mugshotsamplekmp.theme.MugshotTheme
 import uk.co.fractalmotion.mugshotsamplekmp.theme.StatusTone
 import uk.co.fractalmotion.mugshotsamplekmp.theme.statValueTextStyle
+
+private const val ProductionValueFontSizeSp = 40
+private val ProductionUnitBaselineGap = 6.dp
 
 @Composable
 fun SolarScreen(state: SolarUiState) {
@@ -62,7 +65,7 @@ fun SolarScreen(state: SolarUiState) {
             Row(verticalAlignment = Alignment.Bottom) {
                 Text(
                     text = "$productionWatts",
-                    style = statValueTextStyle(40),
+                    style = statValueTextStyle(ProductionValueFontSizeSp),
                     color = MugshotTheme.colors.ink,
                 )
                 Spacer(Modifier.width(MugshotSpacing.xs))
@@ -70,14 +73,14 @@ fun SolarScreen(state: SolarUiState) {
                     text = "W",
                     style = MaterialTheme.typography.bodyMedium,
                     color = MugshotTheme.colors.inkMuted,
-                    modifier = Modifier.padding(bottom = 6.dp),
+                    modifier = Modifier.padding(bottom = ProductionUnitBaselineGap),
                 )
             }
             Spacer(Modifier.height(MugshotSpacing.md))
             LabelledGauge(
                 label = stringResource(Res.string.solar_battery),
                 valueText = "$batteryPercent%",
-                fraction = batteryPercent / 100f,
+                fraction = batteryPercent.asFraction(),
                 accent = ModuleAccent.Solar.tone,
             )
         }
@@ -105,7 +108,7 @@ fun SolarScreen(state: SolarUiState) {
 }
 
 @Composable
-private fun SolarPanelRow(panel: SolarPanelGroup) {
+private fun SolarPanelRow(panel: SolarPanel) {
     PixelCard(modifier = Modifier.fillMaxWidth()) {
         Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
             Text(panel.name, style = MaterialTheme.typography.titleSmall, color = MugshotTheme.colors.ink)
@@ -115,7 +118,7 @@ private fun SolarPanelRow(panel: SolarPanelGroup) {
         LabelledGauge(
             label = stringResource(Res.string.solar_efficiency),
             valueText = "${panel.efficiencyPercent}%",
-            fraction = panel.efficiencyPercent / 100f,
+            fraction = panel.efficiencyPercent.asFraction(),
             accent = ModuleAccent.Solar.tone,
         )
     }

@@ -10,12 +10,13 @@ enum class FarmWindowSize {
     Medium,
     Expanded;
 
-    val isCompact get() = this == Compact
-
     companion object {
+        private val compactMaxWidth = 600.dp
+        private val mediumMaxWidth = 900.dp
+
         fun from(width: Dp): FarmWindowSize = when {
-            width < 600.dp -> Compact
-            width < 900.dp -> Medium
+            width < compactMaxWidth -> Compact
+            width < mediumMaxWidth -> Medium
             else -> Expanded
         }
     }

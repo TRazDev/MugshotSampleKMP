@@ -9,6 +9,7 @@ import mugshotsamplekmp.shared.generated.resources.nav_fertiliser
 import mugshotsamplekmp.shared.generated.resources.nav_light
 import mugshotsamplekmp.shared.generated.resources.nav_solar
 import mugshotsamplekmp.shared.generated.resources.nav_water
+import uk.co.fractalmotion.mugshotsamplekmp.theme.ModuleAccent
 import uk.co.fractalmotion.mugshotsamplekmp.theme.StatusTone
 
 /** Static sample data for previews - this sample has no real backend/data layer. */
@@ -21,15 +22,43 @@ object MockDashboardData {
     )
 
     val moduleStatuses = listOf(
-        ModuleStatus(Res.string.nav_light, Res.string.common_auto, StatusTone.Nominal, "6/6 zones on schedule", 1f),
-        ModuleStatus(Res.string.nav_fertiliser, Res.string.fert_dosing_now, StatusTone.Nominal, "EC 1.8 - pH 6.1", 0.72f),
-        ModuleStatus(Res.string.nav_water, Res.string.common_nominal, StatusTone.Nominal, "Reservoir at 68%", 0.68f),
-        ModuleStatus(Res.string.nav_solar, Res.string.common_warning, StatusTone.Warning, "Panel C output low", 0.41f),
+        ModuleStatus(
+            accent = ModuleAccent.Light,
+            labelRes = Res.string.nav_light,
+            statusTextRes = Res.string.common_auto,
+            statusTone = StatusTone.Nominal,
+            headline = "6/6 zones on schedule",
+            progressFraction = 1f,
+        ),
+        ModuleStatus(
+            accent = ModuleAccent.Fertiliser,
+            labelRes = Res.string.nav_fertiliser,
+            statusTextRes = Res.string.fert_dosing_now,
+            statusTone = StatusTone.Nominal,
+            headline = "EC 1.8 - pH 6.1",
+            progressFraction = 0.72f,
+        ),
+        ModuleStatus(
+            accent = ModuleAccent.Water,
+            labelRes = Res.string.nav_water,
+            statusTextRes = Res.string.common_nominal,
+            statusTone = StatusTone.Nominal,
+            headline = "Reservoir at 68%",
+            progressFraction = 0.68f,
+        ),
+        ModuleStatus(
+            accent = ModuleAccent.Solar,
+            labelRes = Res.string.nav_solar,
+            statusTextRes = Res.string.common_warning,
+            statusTone = StatusTone.Warning,
+            headline = "Panel C output low",
+            progressFraction = 0.41f,
+        ),
     )
 
     val alerts = listOf(
-        FarmAlert("Solar panel C output 22% below array average", StatusTone.Warning),
-        FarmAlert("Fertiliser tank B due for refill in 2 days", StatusTone.Neutral),
+        FarmAlert(message = "Solar panel C output 22% below array average", tone = StatusTone.Warning),
+        FarmAlert(message = "Fertiliser tank B due for refill in 2 days", tone = StatusTone.Neutral),
     )
 
     val energyTodayKwh = 14.2

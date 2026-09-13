@@ -10,10 +10,10 @@ object MockSolarData {
     val efficiencyPercent = 87
 
     val panels = listOf(
-        SolarPanelGroup("Panel A", outputWatts = 820, efficiencyPercent = 94),
-        SolarPanelGroup("Panel B", outputWatts = 790, efficiencyPercent = 91),
-        SolarPanelGroup("Panel C", outputWatts = 540, efficiencyPercent = 62),
-        SolarPanelGroup("Panel D", outputWatts = 970, efficiencyPercent = 97),
+        SolarPanel(name = "Panel A", outputWatts = 820, efficiencyPercent = 94),
+        SolarPanel(name = "Panel B", outputWatts = 790, efficiencyPercent = 91),
+        SolarPanel(name = "Panel C", outputWatts = 540, efficiencyPercent = 62),
+        SolarPanel(name = "Panel D", outputWatts = 970, efficiencyPercent = 97),
     )
 
     val default = SolarUiState(

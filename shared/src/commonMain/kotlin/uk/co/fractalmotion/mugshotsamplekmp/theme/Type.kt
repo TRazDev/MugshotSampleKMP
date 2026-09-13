@@ -25,7 +25,7 @@ private val latinScriptLanguages = setOf("en", "it")
 private fun isLatinScriptLocale(): Boolean = Locale.current.language in latinScriptLanguages
 
 @Composable
-fun pixelFontFamily(): FontFamily = FontFamily(Font(Res.font.press_start_2p, weight = FontWeight.Normal))
+private fun pixelFontFamily(): FontFamily = FontFamily(Font(Res.font.press_start_2p, weight = FontWeight.Normal))
 
 @Composable
 private fun monoFontFamily(): FontFamily = FontFamily(
@@ -33,17 +33,13 @@ private fun monoFontFamily(): FontFamily = FontFamily(
     Font(Res.font.space_mono_bold, weight = FontWeight.Bold),
 )
 
-/** Always-safe display face for numbers/units - digits render fine in every locale. */
-@Composable
-fun pixelDigitsFontFamily(): FontFamily = pixelFontFamily()
-
 /** Word-bearing display face: pixel font for Latin locales, system default for CJK. */
 @Composable
-fun retroDisplayFontFamily(): FontFamily = if (isLatinScriptLocale()) pixelFontFamily() else FontFamily.Default
+private fun retroDisplayFontFamily(): FontFamily = if (isLatinScriptLocale()) pixelFontFamily() else FontFamily.Default
 
 /** Word-bearing body face: retro monospace for Latin locales, system default for CJK. */
 @Composable
-fun retroBodyFontFamily(): FontFamily = if (isLatinScriptLocale()) monoFontFamily() else FontFamily.Default
+private fun retroBodyFontFamily(): FontFamily = if (isLatinScriptLocale()) monoFontFamily() else FontFamily.Default
 
 @Composable
 fun mugshotTypography(): Typography {
@@ -64,11 +60,14 @@ fun mugshotTypography(): Typography {
     )
 }
 
-/** Big numeric readout style - always uses the pixel font, safe in every locale. */
+// Keeps line height comfortably clear of the pixel font's blocky glyph descenders.
+private const val StatValueLineHeightPaddingSp = 8
+
+/** Big numeric readout style - always uses the pixel font, safe in every locale (digits render fine everywhere). */
 @Composable
 fun statValueTextStyle(sizeSp: Int = 28): TextStyle = TextStyle(
-    fontFamily = pixelDigitsFontFamily(),
+    fontFamily = pixelFontFamily(),
     fontWeight = FontWeight.Normal,
     fontSize = sizeSp.sp,
-    lineHeight = (sizeSp + 8).sp,
+    lineHeight = (sizeSp + StatValueLineHeightPaddingSp).sp,
 )

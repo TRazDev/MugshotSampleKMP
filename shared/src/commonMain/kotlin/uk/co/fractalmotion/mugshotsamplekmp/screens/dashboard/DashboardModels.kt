@@ -1,6 +1,7 @@
 package uk.co.fractalmotion.mugshotsamplekmp.screens.dashboard
 
 import org.jetbrains.compose.resources.StringResource
+import uk.co.fractalmotion.mugshotsamplekmp.theme.ModuleAccent
 import uk.co.fractalmotion.mugshotsamplekmp.theme.StatusTone
 
 data class DashboardVitals(
@@ -16,11 +17,12 @@ data class DashboardVitals(
  * is left as English sample content, the same way [FarmAlert.message] is.
  */
 data class ModuleStatus(
+    val accent: ModuleAccent,
     val labelRes: StringResource,
     val statusTextRes: StringResource,
     val statusTone: StatusTone,
     val headline: String,
-    val fraction: Float,
+    val progressFraction: Float,
 )
 
 data class FarmAlert(

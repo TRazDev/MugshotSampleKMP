@@ -17,36 +17,27 @@ data class MugshotColorScheme(
     val isDark: Boolean,
     val background: Color,
     val surface: Color,
-    val surfaceAlt: Color,
     val ink: Color,
     val inkMuted: Color,
     val hairline: Color,
-    val inverseSurface: Color,
-    val inverseInk: Color,
 )
 
 private val LightMugshotColors = MugshotColorScheme(
     isDark = false,
     background = MugshotColors.Paper,
     surface = MugshotColors.BoneWhite,
-    surfaceAlt = MugshotColors.PaperDim,
     ink = MugshotColors.Ink,
     inkMuted = MugshotColors.InkSoft,
     hairline = MugshotColors.HairlineLight,
-    inverseSurface = MugshotColors.VoidBlack,
-    inverseInk = MugshotColors.BoneWhite,
 )
 
 private val DarkMugshotColors = MugshotColorScheme(
     isDark = true,
     background = MugshotColors.VoidBlack,
     surface = MugshotColors.CoalSurface,
-    surfaceAlt = MugshotColors.CoalSurfaceAlt,
     ink = MugshotColors.BoneWhite,
     inkMuted = MugshotColors.BoneDim,
     hairline = MugshotColors.HairlineDark,
-    inverseSurface = MugshotColors.Paper,
-    inverseInk = MugshotColors.Ink,
 )
 
 val LocalMugshotColors = staticCompositionLocalOf { LightMugshotColors }
@@ -56,14 +47,14 @@ object MugshotTheme {
         @Composable get() = LocalMugshotColors.current
 }
 
-private val Sharp = RoundedCornerShape(0.dp)
+private val sharpCornerShape = RoundedCornerShape(0.dp)
 
-private val SharpShapes = Shapes(
-    extraSmall = Sharp,
-    small = Sharp,
-    medium = Sharp,
-    large = Sharp,
-    extraLarge = Sharp,
+private val sharpShapes = Shapes(
+    extraSmall = sharpCornerShape,
+    small = sharpCornerShape,
+    medium = sharpCornerShape,
+    large = sharpCornerShape,
+    extraLarge = sharpCornerShape,
 )
 
 @Composable
@@ -72,6 +63,9 @@ fun MugshotAppTheme(
     content: @Composable () -> Unit,
 ) {
     val mugshotColors = if (darkTheme) DarkMugshotColors else LightMugshotColors
+    // darkColorScheme/lightColorScheme aren't unified behind one call here on purpose - both take
+    // 30+ optional params, and calling through a shared function reference would force positional
+    // (unnamed) arguments, which is far easier to miswire than this small duplication.
     val materialScheme = if (darkTheme) {
         darkColorScheme(
             primary = mugshotColors.ink,
@@ -103,7 +97,7 @@ fun MugshotAppTheme(
         MaterialTheme(
             colorScheme = materialScheme,
             typography = mugshotTypography(),
-            shapes = SharpShapes,
+            shapes = sharpShapes,
             content = content,
         )
     }

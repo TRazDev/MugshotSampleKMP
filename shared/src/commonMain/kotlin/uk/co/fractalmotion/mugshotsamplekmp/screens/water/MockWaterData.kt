@@ -10,10 +10,10 @@ object MockWaterData {
     val nextCycleTime = "14:00"
 
     val irrigationLines = listOf(
-        IrrigationLine("Line 1 - Propagation", isActive = true, flowLpm = 1.2),
-        IrrigationLine("Line 2 - Vegetative", isActive = true, flowLpm = 1.8),
-        IrrigationLine("Line 3 - Flowering", isActive = false, flowLpm = 0.0),
-        IrrigationLine("Line 4 - Herbs", isActive = true, flowLpm = 0.9),
+        IrrigationLine(name = "Line 1 - Propagation", isActive = true, flowLpm = 1.2),
+        IrrigationLine(name = "Line 2 - Vegetative", isActive = true, flowLpm = 1.8),
+        IrrigationLine(name = "Line 3 - Flowering", isActive = false, flowLpm = 0.0),
+        IrrigationLine(name = "Line 4 - Herbs", isActive = true, flowLpm = 0.9),
     )
 
     val default = WaterUiState(

@@ -25,6 +25,9 @@ import uk.co.fractalmotion.mugshotsamplekmp.theme.MugshotTheme
 import uk.co.fractalmotion.mugshotsamplekmp.theme.StatusTone
 import uk.co.fractalmotion.mugshotsamplekmp.theme.statValueTextStyle
 
+
+private val SectionHeaderBulletSize = 8.dp
+
 /** A bordered header line: a small square bullet, an uppercase title, and optional trailing content. */
 @Composable
 fun SectionHeader(
@@ -37,7 +40,7 @@ fun SectionHeader(
         modifier.fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        Box(Modifier.width(8.dp).height(8.dp).background(colors.ink))
+        PixelDot(color = colors.ink, size = SectionHeaderBulletSize)
         Spacer(Modifier.width(MugshotSpacing.xs))
         Text(
             text = title.uppercase(),
@@ -63,7 +66,7 @@ fun StatusPill(
             .padding(horizontal = MugshotSpacing.sm, vertical = MugshotSpacing.xs),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        PixelDot(color = tone.tone, size = 7.dp)
+        PixelDot(color = tone.tone)
         Spacer(Modifier.width(MugshotSpacing.xs))
         Text(
             text = text.uppercase(),
@@ -87,7 +90,7 @@ fun StatTile(
     PixelCard(modifier = modifier) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             if (accent != null) {
-                PixelDot(color = accent, size = 7.dp)
+                PixelDot(color = accent)
                 Spacer(Modifier.width(MugshotSpacing.xs))
             }
             Text(
@@ -100,17 +103,20 @@ fun StatTile(
         Row(verticalAlignment = Alignment.Bottom) {
             Text(text = value, style = statValueTextStyle(valueSizeSp), color = colors.ink)
             if (unit != null) {
-                Spacer(Modifier.width(4.dp))
+                Spacer(Modifier.width(MugshotSpacing.xs))
                 Text(
                     text = unit,
                     style = MaterialTheme.typography.bodySmall,
                     color = colors.inkMuted,
-                    modifier = Modifier.padding(bottom = 4.dp),
+                    modifier = Modifier.padding(bottom = MugshotSpacing.xs),
                 )
             }
         }
     }
 }
+
+private val GaugeSegmentHeight = 16.dp
+private val GaugeSegmentGap = 2.dp
 
 /** Segmented block gauge (like an old LCD battery meter) representing a 0f..1f fraction. */
 @Composable
@@ -122,13 +128,13 @@ fun SegmentedGauge(
 ) {
     val colors = MugshotTheme.colors
     val filledCount = (fraction.coerceIn(0f, 1f) * segments).roundToInt()
-    Row(modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(2.dp)) {
+    Row(modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(GaugeSegmentGap)) {
         repeat(segments) { index ->
             val filled = index < filledCount
             Box(
                 Modifier
                     .weight(1f)
-                    .height(16.dp)
+                    .height(GaugeSegmentHeight)
                     .background(if (filled) (accent ?: colors.ink) else Color.Transparent)
                     .border(MugshotStroke.hairline, colors.ink),
             )
@@ -156,6 +162,8 @@ fun LabelledGauge(
     }
 }
 
+private val InlineStatLabelToValueGap = 2.dp
+
 /** Small label-over-value pair, used for secondary stats inside a card (e.g. ON time / OFF time). */
 @Composable
 fun InlineStat(
@@ -167,7 +175,10 @@ fun InlineStat(
     val colors = MugshotTheme.colors
     Column(modifier, horizontalAlignment = horizontalAlignment) {
         Text(label.uppercase(), style = MaterialTheme.typography.labelSmall, color = colors.inkMuted)
-        Spacer(Modifier.height(2.dp))
+        Spacer(Modifier.height(InlineStatLabelToValueGap))
         Text(value, style = MaterialTheme.typography.titleSmall, color = colors.ink)
     }
 }
+
+/** 0-100 percent value converted to the 0f..1f fraction [SegmentedGauge]/[LabelledGauge] expect. */
+fun Int.asFraction(): Float = this / 100f

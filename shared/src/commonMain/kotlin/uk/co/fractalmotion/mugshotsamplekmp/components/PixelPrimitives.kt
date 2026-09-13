@@ -32,7 +32,6 @@ import uk.co.fractalmotion.mugshotsamplekmp.theme.MugshotTheme
 @Composable
 fun PixelCard(
     modifier: Modifier = Modifier,
-    fill: Color? = null,
     contentPadding: PaddingValues = PaddingValues(MugshotSpacing.md),
     content: @Composable ColumnScope.() -> Unit,
 ) {
@@ -47,13 +46,17 @@ fun PixelCard(
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(fill ?: colors.surface)
+                .background(colors.surface)
                 .border(MugshotStroke.regular, colors.ink)
                 .padding(contentPadding),
             content = content,
         )
     }
 }
+
+private val DotDividerHeight = 6.dp
+private val DotDividerDotSize = 2.dp
+private val DotDividerGap = 4.dp
 
 /** Dashed/dotted rule reminiscent of a dot-matrix printout. */
 @Composable
@@ -64,15 +67,15 @@ fun DotDivider(
     Box(
         modifier
             .fillMaxWidth()
-            .height(6.dp)
+            .height(DotDividerHeight)
             .drawBehind {
-                val dot = 2.dp.toPx()
-                val gap = 4.dp.toPx()
+                val dotSizePx = DotDividerDotSize.toPx()
+                val gapPx = DotDividerGap.toPx()
                 var x = 0f
-                val y = size.height / 2f - dot / 2f
+                val y = size.height / 2f - dotSizePx / 2f
                 while (x < size.width) {
-                    drawRect(color, topLeft = Offset(x, y), size = Size(dot, dot))
-                    x += dot + gap
+                    drawRect(color, topLeft = Offset(x, y), size = Size(dotSizePx, dotSizePx))
+                    x += dotSizePx + gapPx
                 }
             },
     )
@@ -94,31 +97,38 @@ fun Modifier.dotGridBackground(color: Color, spacing: Dp = 18.dp, dotSize: Dp = 
         }
     }
 
-/** Small square swatch used as an accent/status marker next to labels. */
+private val PixelDotDefaultSize = 7.dp
+
+/** Small bordered square swatch used as an accent/status marker next to labels. */
 @Composable
 fun PixelDot(
     color: Color,
     modifier: Modifier = Modifier,
-    size: Dp = 8.dp,
-    bordered: Boolean = true,
+    size: Dp = PixelDotDefaultSize,
 ) {
     val colors = MugshotTheme.colors
     Box(
         modifier
             .size(size)
             .background(color)
-            .let { if (bordered) it.border(MugshotStroke.hairline, colors.ink) else it },
+            .border(MugshotStroke.hairline, colors.ink),
     )
 }
+
+// The dot grid reads as a faint texture rather than a pattern - slightly stronger in light mode
+// since the same alpha looks fainter against a dark background.
+private const val DotGridAlphaDark = 0.5f
+private const val DotGridAlphaLight = 0.7f
 
 @Composable
 fun FullBleedBackground(modifier: Modifier = Modifier, content: @Composable BoxScope.() -> Unit) {
     val colors = MugshotTheme.colors
+    val dotGridAlpha = if (colors.isDark) DotGridAlphaDark else DotGridAlphaLight
     Box(
         modifier
             .fillMaxSize()
             .background(colors.background)
-            .dotGridBackground(colors.hairline.copy(alpha = if (colors.isDark) 0.5f else 0.7f)),
+            .dotGridBackground(colors.hairline.copy(alpha = dotGridAlpha)),
         content = content,
     )
 }

@@ -12,7 +12,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import mugshotsamplekmp.shared.generated.resources.Res
 import mugshotsamplekmp.shared.generated.resources.common_active
 import mugshotsamplekmp.shared.generated.resources.common_idle
@@ -28,6 +27,7 @@ import mugshotsamplekmp.shared.generated.resources.water_temperature
 import mugshotsamplekmp.shared.generated.resources.water_title
 import org.jetbrains.compose.resources.stringResource
 import uk.co.fractalmotion.mugshotsamplekmp.components.InlineStat
+import uk.co.fractalmotion.mugshotsamplekmp.components.asFraction
 import uk.co.fractalmotion.mugshotsamplekmp.components.LabelledGauge
 import uk.co.fractalmotion.mugshotsamplekmp.components.ModuleScreenScaffold
 import uk.co.fractalmotion.mugshotsamplekmp.components.PixelCard
@@ -56,7 +56,7 @@ fun WaterScreen(state: WaterUiState) {
             LabelledGauge(
                 label = stringResource(Res.string.water_reservoir_level),
                 valueText = "$reservoirLevelPercent%",
-                fraction = reservoirLevelPercent / 100f,
+                fraction = reservoirLevelPercent.asFraction(),
                 accent = ModuleAccent.Water.tone,
             )
         }
@@ -70,7 +70,7 @@ fun WaterScreen(state: WaterUiState) {
                         style = MaterialTheme.typography.labelSmall,
                         color = MugshotTheme.colors.inkMuted,
                     )
-                    Spacer(Modifier.height(4.dp))
+                    Spacer(Modifier.height(MugshotSpacing.xs))
                     StatusPill(
                         text = stringResource(if (pumpActive) Res.string.common_active else Res.string.common_idle),
                         tone = if (pumpActive) StatusTone.Nominal else StatusTone.Neutral,

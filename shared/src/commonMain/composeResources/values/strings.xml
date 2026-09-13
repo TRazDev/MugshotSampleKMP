@@ -54,7 +54,6 @@
     <string name="fert_ec">EC Level</string>
     <string name="fert_ph">pH Level</string>
     <string name="fert_tank_level">Tank Level</string>
-    <string name="fert_next_dose">Next Dose</string>
     <string name="fert_dosing_now">Dosing Now</string>
     <string name="fert_section_schedule">Dosing Schedule</string>
 
@@ -75,7 +74,6 @@
     <string name="solar_grid_feed">Grid Feed</string>
     <string name="solar_grid_draw">Grid Draw</string>
     <string name="solar_section_panels">Panel Array</string>
-    <string name="solar_panel">Panel</string>
     <string name="solar_today_total">Today’s Total</string>
     <string name="solar_efficiency">Efficiency</string>
 </resources>

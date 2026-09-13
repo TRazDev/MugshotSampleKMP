@@ -54,7 +54,6 @@
     <string name="fert_ec">EC値</string>
     <string name="fert_ph">pH値</string>
     <string name="fert_tank_level">タンク残量</string>
-    <string name="fert_next_dose">次回投与</string>
     <string name="fert_dosing_now">投与中</string>
     <string name="fert_section_schedule">投与スケジュール</string>
 
@@ -75,7 +74,6 @@
     <string name="solar_grid_feed">売電量</string>
     <string name="solar_grid_draw">買電量</string>
     <string name="solar_section_panels">パネルアレイ</string>
-    <string name="solar_panel">パネル</string>
     <string name="solar_today_total">本日の合計</string>
     <string name="solar_efficiency">発電効率</string>
 </resources>

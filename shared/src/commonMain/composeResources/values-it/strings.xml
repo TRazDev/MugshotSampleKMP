@@ -54,7 +54,6 @@
     <string name="fert_ec">Livello EC</string>
     <string name="fert_ph">Livello pH</string>
     <string name="fert_tank_level">Livello Serbatoio</string>
-    <string name="fert_next_dose">Prossima Dose</string>
     <string name="fert_dosing_now">Dosaggio in Corso</string>
     <string name="fert_section_schedule">Programma Dosaggio</string>
 
@@ -75,7 +74,6 @@
     <string name="solar_grid_feed">Immissione in Rete</string>
     <string name="solar_grid_draw">Prelievo dalla Rete</string>
     <string name="solar_section_panels">Array Pannelli</string>
-    <string name="solar_panel">Pannello</string>
     <string name="solar_today_total">Totale Odierno</string>
     <string name="solar_efficiency">Efficienza</string>
 </resources>

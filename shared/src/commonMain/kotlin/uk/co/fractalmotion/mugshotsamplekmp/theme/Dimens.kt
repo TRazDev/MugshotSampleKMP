@@ -4,7 +4,6 @@ import androidx.compose.ui.unit.dp
 
 /** Everything is a multiple of a 4dp pixel-grid unit to keep the dot-matrix feel consistent. */
 object MugshotSpacing {
-    val unit = 4.dp
     val xs = 4.dp
     val sm = 8.dp
     val md = 12.dp
@@ -16,7 +15,6 @@ object MugshotSpacing {
 object MugshotStroke {
     val hairline = 1.dp
     val regular = 2.dp
-    val thick = 3.dp
     val shadowOffset = 4.dp
 }
 

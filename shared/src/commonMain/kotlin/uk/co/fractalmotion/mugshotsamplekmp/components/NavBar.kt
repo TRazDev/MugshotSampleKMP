@@ -32,6 +32,8 @@ data class NavItem(
     val accent: Color,
 )
 
+private val NavGlyphBadgeSize = 22.dp
+
 /**
  * Bottom tab bar for switching between the demo screens - plain local selection state,
  * no navigation library, since this sample has no real back-stack/routing.
@@ -71,7 +73,7 @@ fun PixelBottomNav(
                 ) {
                     Box(
                         Modifier
-                            .size(22.dp)
+                            .size(NavGlyphBadgeSize)
                             .background(if (selected) item.accent else Color.Transparent)
                             .border(MugshotStroke.hairline, if (selected) colors.ink else colors.hairline),
                         contentAlignment = Alignment.Center,
@@ -82,7 +84,7 @@ fun PixelBottomNav(
                             color = if (selected) colors.ink else colors.inkMuted,
                         )
                     }
-                    Spacer(Modifier.height(4.dp))
+                    Spacer(Modifier.height(MugshotSpacing.xs))
                     Text(
                         text = item.label.uppercase(),
                         style = MaterialTheme.typography.labelSmall,

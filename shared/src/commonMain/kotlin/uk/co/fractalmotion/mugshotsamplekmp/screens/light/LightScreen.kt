@@ -15,7 +15,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
-import androidx.compose.ui.unit.dp
 import mugshotsamplekmp.shared.generated.resources.Res
 import mugshotsamplekmp.shared.generated.resources.light_daily_hours
 import mugshotsamplekmp.shared.generated.resources.light_intensity
@@ -30,6 +29,7 @@ import mugshotsamplekmp.shared.generated.resources.light_zone_status_on
 import org.jetbrains.compose.resources.stringResource
 import uk.co.fractalmotion.mugshotsamplekmp.components.DotDivider
 import uk.co.fractalmotion.mugshotsamplekmp.components.InlineStat
+import uk.co.fractalmotion.mugshotsamplekmp.components.asFraction
 import uk.co.fractalmotion.mugshotsamplekmp.components.LabelledGauge
 import uk.co.fractalmotion.mugshotsamplekmp.components.ModuleScreenScaffold
 import uk.co.fractalmotion.mugshotsamplekmp.components.PixelCard
@@ -81,7 +81,7 @@ private fun LightZoneCard(zone: LightZone) {
         if (hasFault) {
             Spacer(Modifier.height(MugshotSpacing.sm))
             Row(verticalAlignment = Alignment.CenterVertically) {
-                PixelDot(color = StatusTone.Critical.tone, size = 7.dp)
+                PixelDot(color = StatusTone.Critical.tone)
                 Spacer(Modifier.width(MugshotSpacing.sm))
                 Text(
                     text = zone.faultMessage.orEmpty(),
@@ -94,7 +94,7 @@ private fun LightZoneCard(zone: LightZone) {
         LabelledGauge(
             label = stringResource(Res.string.light_intensity),
             valueText = "${zone.intensityPercent}%",
-            fraction = zone.intensityPercent / 100f,
+            fraction = zone.intensityPercent.asFraction(),
             accent = if (hasFault) StatusTone.Critical.tone else ModuleAccent.Light.tone,
         )
         Spacer(Modifier.height(MugshotSpacing.sm))

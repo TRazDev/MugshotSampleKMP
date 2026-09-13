@@ -3,20 +3,18 @@ package uk.co.fractalmotion.mugshotsamplekmp.theme
 import androidx.compose.ui.graphics.Color
 
 /**
- * Neo 8-bit / dot-matrix palette: near-black & near-white as the only
+ * Neo 8-bit / dot-matrix palette: near-black and near-white as the only
  * "loud" colours, with a handful of pale accents reserved for module
- * identity and status. Nothing everything is pure black on pure white
- * on purpose - it reads closer to a dot-matrix receipt than a screen.
+ * identity and status - deliberately pure black on pure white so it reads
+ * closer to a dot-matrix receipt than a typical app screen.
  */
 object MugshotColors {
     val Ink = Color(0xFF111110)
     val InkSoft = Color(0xFF33322F)
     val Paper = Color(0xFFF7F5EF)
-    val PaperDim = Color(0xFFEAE7DC)
 
     val VoidBlack = Color(0xFF0A0A09)
     val CoalSurface = Color(0xFF191917)
-    val CoalSurfaceAlt = Color(0xFF232320)
     val BoneWhite = Color(0xFFF2F0E8)
     val BoneDim = Color(0xFFB9B6A8)
 
