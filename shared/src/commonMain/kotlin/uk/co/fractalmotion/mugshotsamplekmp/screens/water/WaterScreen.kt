@@ -12,6 +12,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import uk.co.fractalmotion.mugshot.annotations.Mugshot
+import uk.co.fractalmotion.mugshot.annotations.MugshotLightDark
 import mugshotsamplekmp.shared.generated.resources.Res
 import mugshotsamplekmp.shared.generated.resources.common_active
 import mugshotsamplekmp.shared.generated.resources.common_idle
@@ -120,8 +122,10 @@ private fun IrrigationLineRow(line: IrrigationLine) {
     }
 }
 
+@Mugshot
+@MugshotLightDark
 @Preview
 @Composable
-private fun WaterScreenPreview() {
+internal fun WaterScreenPreview() {
     MugshotAppTheme { WaterScreen(state = MockWaterData.default) }
 }

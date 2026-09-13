@@ -1,5 +1,5 @@
 [versions]
-agp = "9.0.1"
+agp = "9.3.2"
 android-compileSdk = "36"
 android-minSdk = "28"
 android-targetSdk = "36"
@@ -8,9 +8,11 @@ androidx-appcompat = "1.8.0"
 androidx-core = "1.19.0"
 androidx-lifecycle = "2.11.0-beta01"
 composeMultiplatform = "1.11.1"
-kotlin = "2.4.10"
+kotlin = "2.3.0"
 kotlinx-coroutines = "1.11.0"
+ksp = "2.3.8"
 material3 = "1.11.0-alpha07"
+mugshot = "3.3.1"
 
 [libraries]
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidx-core" }
@@ -34,3 +36,5 @@ composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "composeMul
 composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+mugshot = { id = "uk.co.fractalmotion.mugshot", version.ref = "mugshot" }

@@ -13,6 +13,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import uk.co.fractalmotion.mugshot.annotations.Mugshot
+import uk.co.fractalmotion.mugshot.annotations.MugshotLightDark
 import mugshotsamplekmp.shared.generated.resources.Res
 import mugshotsamplekmp.shared.generated.resources.dashboard_alert_title
 import mugshotsamplekmp.shared.generated.resources.dashboard_energy_today
@@ -138,8 +140,10 @@ private fun ModuleStatusRow(module: ModuleStatus) {
     }
 }
 
+@Mugshot
+@MugshotLightDark
 @Preview
 @Composable
-private fun DashboardScreenPreview() {
+internal fun DashboardScreenPreview() {
     MugshotAppTheme { DashboardScreen(state = MockDashboardData.default) }
 }

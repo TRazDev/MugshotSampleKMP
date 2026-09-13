@@ -13,6 +13,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import uk.co.fractalmotion.mugshot.annotations.Mugshot
+import uk.co.fractalmotion.mugshot.annotations.MugshotLightDark
 import mugshotsamplekmp.shared.generated.resources.Res
 import mugshotsamplekmp.shared.generated.resources.common_auto
 import mugshotsamplekmp.shared.generated.resources.fert_dosing_now
@@ -103,8 +105,10 @@ private fun NutrientTankCard(tank: NutrientTank) {
     }
 }
 
+@Mugshot
+@MugshotLightDark
 @Preview
 @Composable
-private fun FertiliserScreenPreview() {
+internal fun FertiliserScreenPreview() {
     MugshotAppTheme { FertiliserScreen(state = MockFertiliserData.default) }
 }

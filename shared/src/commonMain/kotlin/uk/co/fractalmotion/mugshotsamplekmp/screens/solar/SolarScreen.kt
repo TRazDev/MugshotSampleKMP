@@ -14,6 +14,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import uk.co.fractalmotion.mugshot.annotations.Mugshot
+import uk.co.fractalmotion.mugshot.annotations.MugshotLightDark
 import androidx.compose.ui.unit.dp
 import mugshotsamplekmp.shared.generated.resources.Res
 import mugshotsamplekmp.shared.generated.resources.common_online
@@ -124,8 +126,10 @@ private fun SolarPanelRow(panel: SolarPanel) {
     }
 }
 
+@Mugshot
+@MugshotLightDark
 @Preview
 @Composable
-private fun SolarScreenPreview() {
+internal fun SolarScreenPreview() {
     MugshotAppTheme { SolarScreen(state = MockSolarData.default) }
 }

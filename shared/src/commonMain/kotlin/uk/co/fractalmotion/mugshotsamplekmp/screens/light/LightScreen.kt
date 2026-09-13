@@ -14,6 +14,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
+import uk.co.fractalmotion.mugshot.annotations.Mugshot
+import uk.co.fractalmotion.mugshot.annotations.MugshotLightDark
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import mugshotsamplekmp.shared.generated.resources.Res
 import mugshotsamplekmp.shared.generated.resources.light_daily_hours
@@ -113,8 +115,10 @@ class LightUiStatePreviewParameterProvider : PreviewParameterProvider<LightUiSta
     override val values = sequenceOf(MockLightData.nominal, MockLightData.critical)
 }
 
+@Mugshot
+@MugshotLightDark
 @Preview
 @Composable
-private fun LightScreenPreview(@PreviewParameter(LightUiStatePreviewParameterProvider::class) state: LightUiState) {
+internal fun LightScreenPreview(@PreviewParameter(LightUiStatePreviewParameterProvider::class) state: LightUiState) {
     MugshotAppTheme { LightScreen(state) }
 }
