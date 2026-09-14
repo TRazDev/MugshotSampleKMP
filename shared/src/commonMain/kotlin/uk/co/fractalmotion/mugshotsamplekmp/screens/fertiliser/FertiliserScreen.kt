@@ -26,6 +26,8 @@ import mugshotsamplekmp.shared.generated.resources.fert_subtitle
 import mugshotsamplekmp.shared.generated.resources.fert_tank_level
 import mugshotsamplekmp.shared.generated.resources.fert_title
 import org.jetbrains.compose.resources.stringResource
+import uk.co.fractalmotion.mugshot.annotations.MugshotDevices
+import uk.co.fractalmotion.mugshot.annotations.MugshotLocales
 import uk.co.fractalmotion.mugshotsamplekmp.components.DotDivider
 import uk.co.fractalmotion.mugshotsamplekmp.components.InlineStat
 import uk.co.fractalmotion.mugshotsamplekmp.components.asFraction
@@ -107,6 +109,8 @@ private fun NutrientTankCard(tank: NutrientTank) {
 
 @Mugshot
 @MugshotLightDark
+@MugshotDevices
+@MugshotLocales("en", "it", "ja")
 @Preview
 @Composable
 internal fun FertiliserScreenPreview() {

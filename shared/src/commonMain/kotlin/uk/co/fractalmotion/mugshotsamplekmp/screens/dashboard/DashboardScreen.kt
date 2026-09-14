@@ -30,6 +30,8 @@ import mugshotsamplekmp.shared.generated.resources.dashboard_title
 import mugshotsamplekmp.shared.generated.resources.dashboard_water_used_today
 import mugshotsamplekmp.shared.generated.resources.common_online
 import org.jetbrains.compose.resources.stringResource
+import uk.co.fractalmotion.mugshot.annotations.MugshotDevices
+import uk.co.fractalmotion.mugshot.annotations.MugshotLocales
 import uk.co.fractalmotion.mugshotsamplekmp.components.DotDivider
 import uk.co.fractalmotion.mugshotsamplekmp.components.ModuleScreenScaffold
 import uk.co.fractalmotion.mugshotsamplekmp.components.PixelCard
@@ -142,6 +144,8 @@ private fun ModuleStatusRow(module: ModuleStatus) {
 
 @Mugshot
 @MugshotLightDark
+@MugshotDevices
+@MugshotLocales("en", "it", "ja")
 @Preview
 @Composable
 internal fun DashboardScreenPreview() {

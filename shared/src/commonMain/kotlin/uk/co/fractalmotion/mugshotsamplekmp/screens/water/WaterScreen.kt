@@ -28,6 +28,8 @@ import mugshotsamplekmp.shared.generated.resources.water_subtitle
 import mugshotsamplekmp.shared.generated.resources.water_temperature
 import mugshotsamplekmp.shared.generated.resources.water_title
 import org.jetbrains.compose.resources.stringResource
+import uk.co.fractalmotion.mugshot.annotations.MugshotDevices
+import uk.co.fractalmotion.mugshot.annotations.MugshotLocales
 import uk.co.fractalmotion.mugshotsamplekmp.components.InlineStat
 import uk.co.fractalmotion.mugshotsamplekmp.components.asFraction
 import uk.co.fractalmotion.mugshotsamplekmp.components.LabelledGauge
@@ -124,6 +126,8 @@ private fun IrrigationLineRow(line: IrrigationLine) {
 
 @Mugshot
 @MugshotLightDark
+@MugshotDevices
+@MugshotLocales("en", "it", "ja")
 @Preview
 @Composable
 internal fun WaterScreenPreview() {

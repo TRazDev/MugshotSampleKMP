@@ -29,6 +29,8 @@ import mugshotsamplekmp.shared.generated.resources.light_zone_status_fault
 import mugshotsamplekmp.shared.generated.resources.light_zone_status_off
 import mugshotsamplekmp.shared.generated.resources.light_zone_status_on
 import org.jetbrains.compose.resources.stringResource
+import uk.co.fractalmotion.mugshot.annotations.MugshotDevices
+import uk.co.fractalmotion.mugshot.annotations.MugshotLocales
 import uk.co.fractalmotion.mugshotsamplekmp.components.DotDivider
 import uk.co.fractalmotion.mugshotsamplekmp.components.InlineStat
 import uk.co.fractalmotion.mugshotsamplekmp.components.asFraction
@@ -117,6 +119,8 @@ class LightUiStatePreviewParameterProvider : PreviewParameterProvider<LightUiSta
 
 @Mugshot
 @MugshotLightDark
+@MugshotDevices
+@MugshotLocales("en", "it", "ja")
 @Preview
 @Composable
 internal fun LightScreenPreview(@PreviewParameter(LightUiStatePreviewParameterProvider::class) state: LightUiState) {

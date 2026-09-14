@@ -29,6 +29,8 @@ import mugshotsamplekmp.shared.generated.resources.solar_subtitle
 import mugshotsamplekmp.shared.generated.resources.solar_title
 import mugshotsamplekmp.shared.generated.resources.solar_today_total
 import org.jetbrains.compose.resources.stringResource
+import uk.co.fractalmotion.mugshot.annotations.MugshotDevices
+import uk.co.fractalmotion.mugshot.annotations.MugshotLocales
 import uk.co.fractalmotion.mugshotsamplekmp.components.asFraction
 import uk.co.fractalmotion.mugshotsamplekmp.components.LabelledGauge
 import uk.co.fractalmotion.mugshotsamplekmp.components.ModuleScreenScaffold
@@ -128,6 +130,8 @@ private fun SolarPanelRow(panel: SolarPanel) {
 
 @Mugshot
 @MugshotLightDark
+@MugshotDevices
+@MugshotLocales("en", "it", "ja")
 @Preview
 @Composable
 internal fun SolarScreenPreview() {
