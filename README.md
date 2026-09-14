@@ -133,11 +133,6 @@ on, this fails the build whenever a screen changes:
 ./gradlew :shared:verifyMugshot
 ```
 
-> [!NOTE]
-> This project enables Gradle's configuration cache. Mugshot 3.4.1 doesn't support it yet in
-> a module that uses Compose resources, so add `--no-configuration-cache` to both commands
-> for now.
-
 ### What gets recorded
 
 Five annotated previews become twelve images:

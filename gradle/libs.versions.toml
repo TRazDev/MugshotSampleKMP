@@ -12,7 +12,7 @@ kotlin = "2.3.0"
 kotlinx-coroutines = "1.11.0"
 ksp = "2.3.8"
 material3 = "1.11.0-alpha07"
-mugshot = "3.4.1"
+mugshot = "3.4.2"
 
 [libraries]
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidx-core" }
