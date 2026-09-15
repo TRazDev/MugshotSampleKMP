@@ -9,7 +9,7 @@ A small Compose Multiplatform app that shows what screenshot testing looks like 
 KMP project with [Mugshot](https://github.com/TRazDev/Mugshot).
 
 It has five screens written once in `commonMain`, runs on Android, iOS and Desktop, and has
-twelve golden images that Mugshot renders on the JVM. You don't need an emulator, a simulator,
+192 golden images that Mugshot renders on the JVM. You don't need an emulator, a simulator,
 or a single hand-written test class.
 
 ![All five screens in light and dark, as rendered by Mugshot](.github/images/screens.png)
@@ -61,7 +61,7 @@ It's about ten lines of Gradle, plus two annotations on each preview you want te
 ```toml
 [versions]
 ksp = "2.3.8"
-mugshot = "3.4.1"
+mugshot = "3.4.2"
 
 [plugins]
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
@@ -109,6 +109,8 @@ and runtime on `commonMain`, and the test machinery on `androidHostTest`.
 ```kotlin
 @Mugshot
 @MugshotLightDark
+@MugshotDevices
+@MugshotLocales("en", "it", "ja")
 @Preview
 @Composable
 internal fun SolarScreenPreview() {
@@ -116,7 +118,7 @@ internal fun SolarScreenPreview() {
 }
 ```
 
-This is a plain `@Preview` in `commonMain`. The only change besides the two annotations was
+This is a plain `@Preview` in `commonMain`. The only change besides the annotations was
 `private` → `internal`, because the generated test has to be able to call the function.
 
 **5. Record**
@@ -135,20 +137,21 @@ on, this fails the build whenever a screen changes:
 
 ### What gets recorded
 
-Five annotated previews become twelve images:
+Every preview carries the same four annotations, and their axes multiply:
 
-| Preview | Axes | Images |
-| --- | --- | --- |
-| `DashboardScreenPreview` | light, dark | 2 |
-| `LightScreenPreview` | light, dark × 2 `@PreviewParameter` states | 4 |
-| `FertiliserScreenPreview` | light, dark | 2 |
-| `WaterScreenPreview` | light, dark | 2 |
-| `SolarScreenPreview` | light, dark | 2 |
+| Axis | Values |
+| --- | --- |
+| `@MugshotDevices` | phone, foldable, tablet, landscape |
+| `@MugshotLightDark` | light, dark |
+| `@MugshotLocales("en", "it", "ja")` | the default locale, English, Italian, Japanese |
 
-Axes multiply. If you swap `@MugshotLightDark` for `@MugshotMatrix`, each preview gets rendered
-across phone, foldable, tablet and landscape, in light and dark, at three font scales, with no
-other changes. The full list of annotations is in the
-[Mugshot README](https://github.com/TRazDev/Mugshot#annotations).
+That's 32 images per preview. `LightScreenPreview` takes a `@PreviewParameter` with two states,
+so the five previews make six cases and 192 images.
+
+The project also sets `uk.co.fractalmotion.mugshot.downscale=2` in
+[`gradle.properties`](gradle.properties), which renders each device at half its resolution
+instead of Mugshot's default third, for more detail in the golden images. The full list of
+annotations and properties is in the [Mugshot README](https://github.com/TRazDev/Mugshot#annotations).
 
 ## When something breaks
 
@@ -161,7 +164,15 @@ on the Solar screen:
 ```
 
 It compiles, and it looks fine on a desktop window. On a phone, four stat tiles get squeezed
-into one row and the numbers wrap. `verifyMugshot` catches it:
+into one row and the numbers wrap. `verifyMugshot` catches it. With the current axes, every one
+of the Solar screen's 32 tests fails, on each device, theme and locale:
+
+```
+160 tests completed, 32 failed
+```
+
+The output and images below were captured when the sample recorded light and dark only, so they
+show the same failure on a smaller scale.
 
 ```
 MugshotGeneratedPreviewTest > snapshot[SolarScreen.SolarScreenPreview.Light] FAILED
@@ -203,8 +214,9 @@ with the code.
 
 ## Good to know
 
-- **Use Mugshot 3.4.1 or newer.** Support for KMP modules and `commonMain` previews arrived in
-  3.4.0, and 3.4.1 fixes that release's publishing.
+- **Use Mugshot 3.4.2 or newer.** Support for KMP modules and `commonMain` previews arrived in
+  3.4.0, 3.4.1 fixes that release's publishing, and 3.4.2 makes the configuration cache work in
+  a module that uses Compose resources.
 - **`stringResource` works in previews.** Mugshot sets up Compose resources before each render,
   so localised strings show up in goldens without any extra setup.
 - **Previews can't be `private`.** A private `@Mugshot` preview is silently skipped. Add
@@ -212,8 +224,8 @@ with the code.
 - **`@Preview` arguments are ignored.** Set device, theme, locale and font scale with Mugshot's
   annotations, not `@Preview(uiMode = ...)`. Otherwise the IDE preview and the golden drift
   apart.
-- **Mugshot and Robolectric can't share a module.** Keep Robolectric tests in a different
-  module.
+- **Robolectric tests can stay in the module.** Mugshot's generated tests run in a task of
+  their own, `mugshotTestAndroidMain`, in a separate JVM from the module's other host tests.
 
 ## Running the app
 
